@@ -67,6 +67,7 @@
      <Compile Include="Assets\KinectScripts\Samples\SimpleGestureListener.cs" />
      <Compile Include="Assets\Lowpoly Toon Cat Lite\Demo\Cat_Lite_Demo.cs" />
      <Compile Include="Assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
+     <Compile Include="Assets\RunMotion.cs" />
      <Compile Include="Assets\Script\CoinGenerator.cs" />
      <Compile Include="Assets\Script\DragHandler.cs" />
      <Compile Include="Assets\Script\FeedingHandler.cs" />
@@ -74,7 +75,10 @@
      <Compile Include="Assets\Script\HealthBar.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\RandomAction.cs" />
+     <Compile Include="Assets\Script\RandomPosition.cs" />
      <Compile Include="Assets\Script\Status.cs" />
+     <Compile Include="Assets\Script\TrotMotion.cs" />
+     <Compile Include="Assets\Script\WalkMotion.cs" />
      <Compile Include="Assets\Script\buttonActiveAnotherTransform.cs" />
      <Compile Include="Assets\Script\dropDownDetailGroupControler.cs" />
      <None Include="Assets\link.xml" />
@@ -84,13 +88,13 @@
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\Barril pack\ReadMe.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>/Users/Cathy/Documents/Fall2016/CS 490/Sprint 2/CS490-Demo2/cs490/Hibiki_Shoot/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>/Users/Sine/Desktop/Curret/CS490-Demo2/cs490/Hibiki_Shoot/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>

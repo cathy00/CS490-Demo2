@@ -1,8 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/DragHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/RandomPosition.cs">
     <Files>
+      <File FileName="Assets/Script/RandomAction.cs" Line="35" Column="34" />
       <File FileName="Assets/Script/DragHandler.cs" Line="18" Column="3" />
+      <File FileName="Assets/Script/RandomPosition.cs" Line="42" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
