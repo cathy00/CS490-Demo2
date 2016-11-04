@@ -67,7 +67,6 @@
      <Compile Include="Assets\KinectScripts\Samples\SimpleGestureListener.cs" />
      <Compile Include="Assets\Lowpoly Toon Cat Lite\Demo\Cat_Lite_Demo.cs" />
      <Compile Include="Assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
-     <Compile Include="Assets\RunMotion.cs" />
      <Compile Include="Assets\Script\CoinGenerator.cs" />
      <Compile Include="Assets\Script\DragHandler.cs" />
      <Compile Include="Assets\Script\FeedingHandler.cs" />
@@ -75,7 +74,7 @@
      <Compile Include="Assets\Script\HealthBar.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\RandomAction.cs" />
-     <Compile Include="Assets\Script\RandomPosition.cs" />
+     <Compile Include="Assets\Script\RunMotion.cs" />
      <Compile Include="Assets\Script\Status.cs" />
      <Compile Include="Assets\Script\TrotMotion.cs" />
      <Compile Include="Assets\Script\WalkMotion.cs" />

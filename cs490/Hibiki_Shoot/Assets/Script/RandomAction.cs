@@ -32,7 +32,10 @@ public class RandomAction : StateMachineBehaviour {
 	// OnStateMachineEnter is called when entering a statemachine via its Entry Node
 	override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash){
 		Debug.Log("OnStateMachineEnter");
-		animator.SetInteger ("actionID", Random.Range(0, 3));	
+		float rotation = Random.Range (-30.0f, 30.0f);
+		animator.SetInteger ("actionID", Random.Range(0, 3));
+		if (animator.GetInteger ("actionID") == 0 || animator.GetInteger ("actionID") == 3)
+			animator.transform.Rotate (0, rotation, 0);
 	}
 
 	// OnStateMachineExit is called when exiting a statemachine via its Exit Node
