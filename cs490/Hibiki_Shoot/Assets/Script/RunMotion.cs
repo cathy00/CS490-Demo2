@@ -10,6 +10,19 @@ public class RunMotion : StateMachineBehaviour {
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+		
+		if (animator.transform.position.z < -7) {
+			animator.transform.Rotate (0, 0.8f, 0);
+		}
+		else if (animator.transform.position.x > 10) {
+			animator.transform.Rotate (0, 0.8f, 0);
+		}
+		else if (animator.transform.position.z > 5) {
+			animator.transform.Rotate (0, 0.8f, 0);
+		}
+		else if (animator.transform.position.x < -10) {
+			animator.transform.Rotate (0, 0.8f, 0);
+		}
 		animator.transform.Translate (Vector3.forward * Time.deltaTime * 4);
 	}
 
