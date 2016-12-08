@@ -65,7 +65,6 @@
      <Compile Include="Assets\KinectScripts\Samples\MouseControl.cs" />
      <Compile Include="Assets\KinectScripts\Samples\SetSceneAvatars.cs" />
      <Compile Include="Assets\KinectScripts\Samples\SimpleGestureListener.cs" />
-     <Compile Include="Assets\Lowpoly Toon Cat Lite\Demo\Cat_Lite_Demo.cs" />
      <Compile Include="Assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
      <Compile Include="Assets\Script\CatAnimationController.cs" />
      <Compile Include="Assets\Script\CoinGenerator.cs" />
@@ -86,7 +85,6 @@
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\cu_cat\Shaders\CuCatShader.shader" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Barril pack\ReadMe.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>/Users/Sine/Desktop/CS490-Demo2/cs490/Hibiki_Shoot/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
