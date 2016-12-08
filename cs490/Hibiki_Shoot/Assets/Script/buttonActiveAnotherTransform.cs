@@ -35,13 +35,13 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 	}
 
 	public void OnPointerEnter(PointerEventData eventData){
-		Debug.Log ("Enter " + mytransform.name);
+//		Debug.Log ("Enter " + mytransform.name);
 		isPointerEnter = true;
 	}
 
 	public void OnPointerExit(PointerEventData eventData){
 		isPointerEnter = false;
-		Debug.Log ("Leave " + mytransform.name);
+//		Debug.Log ("Leave " + mytransform.name);
 		this.ResetCounter ();
 	}
 
