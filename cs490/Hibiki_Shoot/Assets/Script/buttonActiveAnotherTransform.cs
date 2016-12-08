@@ -28,7 +28,8 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 		if (isPointerEnter) {
 			counter++;
 			fillAmount += 0.01f;
-			mask.fillAmount = fillAmount;
+			if (mask != null )
+				mask.fillAmount = fillAmount;
 		}
 		if (isPointerEnter && responseTime == this.counter) {
 			ResetCounter ();
