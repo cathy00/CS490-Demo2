@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
             if (happy.HCurrVal < 100)
                 happy.HCurrVal += 1;
         }
-        
+
+
 	}
 }
