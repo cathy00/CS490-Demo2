@@ -14,6 +14,12 @@ public class ButtonChooseAnimation : MonoBehaviour {
     int CONDITION_CLEAN = 113;
     int CONDITION_HEALTH = 114;
 
+    int SHOP_TRANS_POS = 2;
+    int SHOP_BUTTON_POS = 21;
+    int SHOP_FOOD = 211;
+    int SHOP_TOY = 212;
+    int SHOP_COM = 213;
+
     // Common-Use Field
 
     [SerializeField]
@@ -60,9 +66,30 @@ public class ButtonChooseAnimation : MonoBehaviour {
     public Transform healthTransform;
     private bool conditionActive = false;
 
+
+    [SerializeField]
+    private GameObject shopBtn;
+
+    [SerializeField]
+    private Image shopMask;
+
+    [SerializeField]
+    private Image foodMask;
+
+    [SerializeField]
+    private Image toyMask;
+
+    [SerializeField]
+    private Image commMask;
+
+    public Transform shopTransform;
+    public Transform foodTransform;
+    public Transform toyTransform;
+    public Transform commTransform;
+    private bool shopActive = false;
+
+
     public bool isInventory = false;
-
-
 
     // Use this for initialization
     void Start () {
@@ -82,91 +109,14 @@ public class ButtonChooseAnimation : MonoBehaviour {
         }
         else if (conditionActive)
         {
-            // HUNGER
-            if (cursorPos == CONDITION_HUNGER)
-            {
-                if (currMask != null)
-                {
-                    currMask.gameObject.SetActive(false);
-                    if (currTrans != null && currTrans != conditionTransform)
-                    {
-                        currTrans.gameObject.SetActive(false);
-                    }
-                    hungerMask.gameObject.SetActive(true);
-                    currMask = hungerMask;
-                    hungerTransform.gameObject.SetActive(true);
-                    currTrans = hungerTransform;
-                }
-            }
-            // HAPPY
-            else if (cursorPos == CONDITION_HAPPY)
-            {
-                if (currMask != null)
-                {
-                    currMask.gameObject.SetActive(false);
-                    if (currTrans != null && currTrans != conditionTransform)
-                    {
-                        currTrans.gameObject.SetActive(false);
-                    }
-                    happyMask.gameObject.SetActive(true);
-                    currMask = happyMask;
-                    happyTransform.gameObject.SetActive(true);
-                    currTrans = happyTransform;
-                }
-            }
-            // CLEAN
-            else if (cursorPos == CONDITION_CLEAN)
-            {
-                if (currTrans != null && currMask != null)
-                {
-                    currMask.gameObject.SetActive(false);
-                    if (currTrans != conditionTransform)
-                    {
-                        currTrans.gameObject.SetActive(false);
-                    }
-                    cleanMask.gameObject.SetActive(true);
-                    currMask = cleanMask;
-                    cleanTransform.gameObject.SetActive(true);
-                    currTrans = cleanTransform;
-                }
-            }
-            // HEALTH
-            else if (cursorPos == CONDITION_HEALTH)
-            {
-                if (currMask != null)
-                {
-                    currMask.gameObject.SetActive(false);
-                    if (currTrans != null && currTrans != conditionTransform)
-                    {
-                        currTrans.gameObject.SetActive(false);
-                    }
-                    healthMask.gameObject.SetActive(true);
-                    currMask = healthMask;
-                    healthTransform.gameObject.SetActive(true);
-                    currTrans = healthTransform;
-                }
-            }
-            // CONDITION MENU
-            else if (cursorPos == CONDITION_TRANS_POS)
-            {
-                if (currMask != null)
-                {
-                    if (currTrans != null && currTrans != conditionTransform)
-                    {
-                        currTrans.gameObject.SetActive(false);
-                        currTrans = conditionTransform;
-                    }
-                    currMask.gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                clearTrans();
-                clearActive();
-                currMask = null;
-                currTrans = null;
-                ResetCounter();
-            }
+            updateCond(cursorPos);
+        }
+        else if (cursorPos == SHOP_BUTTON_POS)
+        {
+            actMouseAnim(shopMask, shopTransform);
+        }
+        else if (shopActive) {
+            updateShop(cursorPos);
         }
         // FREE AREA
         else
@@ -179,7 +129,107 @@ public class ButtonChooseAnimation : MonoBehaviour {
         }
     }
 
+    void updateCond( int cursorPos ) {
+        // HUNGER
+        if (cursorPos == CONDITION_HUNGER)
+        {
+            if (currMask != null)
+            {
+                currMask.gameObject.SetActive(false);
+                if (currTrans != null && currTrans != conditionTransform)
+                {
+                    currTrans.gameObject.SetActive(false);
+                }
+                hungerMask.gameObject.SetActive(true);
+                currMask = hungerMask;
+                hungerTransform.gameObject.SetActive(true);
+                currTrans = hungerTransform;
+            }
+        }
+        // HAPPY
+        else if (cursorPos == CONDITION_HAPPY)
+        {
+            if (currMask != null)
+            {
+                currMask.gameObject.SetActive(false);
+                if (currTrans != null && currTrans != conditionTransform)
+                {
+                    currTrans.gameObject.SetActive(false);
+                }
+                happyMask.gameObject.SetActive(true);
+                currMask = happyMask;
+                happyTransform.gameObject.SetActive(true);
+                currTrans = happyTransform;
+            }
+        }
+        // CLEAN
+        else if (cursorPos == CONDITION_CLEAN)
+        {
+            if (currTrans != null && currMask != null)
+            {
+                currMask.gameObject.SetActive(false);
+                if (currTrans != conditionTransform)
+                {
+                    currTrans.gameObject.SetActive(false);
+                }
+                cleanMask.gameObject.SetActive(true);
+                currMask = cleanMask;
+                cleanTransform.gameObject.SetActive(true);
+                currTrans = cleanTransform;
+            }
+        }
+        // HEALTH
+        else if (cursorPos == CONDITION_HEALTH)
+        {
+            if (currMask != null)
+            {
+                currMask.gameObject.SetActive(false);
+                if (currTrans != null && currTrans != conditionTransform)
+                {
+                    currTrans.gameObject.SetActive(false);
+                }
+                healthMask.gameObject.SetActive(true);
+                currMask = healthMask;
+                healthTransform.gameObject.SetActive(true);
+                currTrans = healthTransform;
+            }
+        }
+        // CONDITION MENU
+        else if (cursorPos == CONDITION_TRANS_POS)
+        {
+            if (currMask != null)
+            {
+                if (currTrans != null && currTrans != conditionTransform)
+                {
+                    currTrans.gameObject.SetActive(false);
+                    currTrans = conditionTransform;
+                }
+                currMask.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            clearTrans();
+            clearActive();
+            currMask = null;
+            currTrans = null;
+            ResetCounter();
+        }
+    }
+
+    void updateShop(int cursorPos) {
+
+
+    }
+
+
     void clearTrans() {
+        conditionMask.gameObject.SetActive(false);
+        hungerMask.gameObject.SetActive(false);
+        happyMask.gameObject.SetActive(false);
+        cleanMask.gameObject.SetActive(false);
+        healthMask.gameObject.SetActive(false);
+
         conditionTransform.gameObject.SetActive(false);
         hungerTransform.gameObject.SetActive(false);
         happyTransform.gameObject.SetActive(false);
@@ -189,6 +239,7 @@ public class ButtonChooseAnimation : MonoBehaviour {
 
     void clearActive() {
         conditionActive = false;
+        shopActive = false;
     }
 
     void ResetCounter() {
@@ -199,12 +250,14 @@ public class ButtonChooseAnimation : MonoBehaviour {
     int isCursorEnter() {
         Vector2 pos = cursor.transform.position;
         // Condition
-        if (120 >= pos.x && 10 <= pos.x && kheight - 20 >= pos.y && kheight - 340 <= pos.y) {
+        if (120 >= pos.x && 10 <= pos.x && kheight - 20 >= pos.y && kheight - 340 <= pos.y)
+        {
             if (120 >= pos.x && 20 <= pos.x && kheight - 20 >= pos.y && kheight - 120 <= pos.y)
             {
                 return CONDITION_BUTTON_POS;
             }
-            if (kheight - 120 >= pos.y && kheight - 160 <= pos.y) {
+            if (kheight - 120 >= pos.y && kheight - 160 <= pos.y)
+            {
                 return CONDITION_HUNGER;
             }
             if (kheight - 160 >= pos.y && kheight - 200 <= pos.y)
@@ -220,6 +273,9 @@ public class ButtonChooseAnimation : MonoBehaviour {
                 return CONDITION_HEALTH;
             }
             return CONDITION_TRANS_POS;
+        }
+        else if (120 >= pos.x && 20 <= pos.x && 120 >= pos.y &&  20 <= pos.y) {
+            return SHOP_BUTTON_POS;
         }
         return -1;
     }
