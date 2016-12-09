@@ -58,6 +58,7 @@ public class ButtonChooseAnimation : MonoBehaviour {
     public Transform happyTransform;
     public Transform cleanTransform;
     public Transform healthTransform;
+    private bool conditionActive = false;
 
     public bool isInventory = false;
 
@@ -79,96 +80,115 @@ public class ButtonChooseAnimation : MonoBehaviour {
         {
             actMouseAnim(conditionMask, conditionTransform);
         }
-        // HUNGER
-        else if (cursorPos == CONDITION_HUNGER)
+        else if (conditionActive)
         {
-            if (currMask != null)
+            // HUNGER
+            if (cursorPos == CONDITION_HUNGER)
             {
-                currMask.gameObject.SetActive(false);
-                if (currTrans != null && currTrans != conditionTransform)
+                if (currMask != null)
                 {
-                    currTrans.gameObject.SetActive(false);
+                    currMask.gameObject.SetActive(false);
+                    if (currTrans != null && currTrans != conditionTransform)
+                    {
+                        currTrans.gameObject.SetActive(false);
+                    }
+                    hungerMask.gameObject.SetActive(true);
+                    currMask = hungerMask;
+                    hungerTransform.gameObject.SetActive(true);
+                    currTrans = hungerTransform;
                 }
-                hungerMask.gameObject.SetActive(true);
-                currMask = hungerMask;
-                hungerTransform.gameObject.SetActive(true);
-                currTrans = hungerTransform;
             }
-        }
-        // HAPPY
-        else if (cursorPos == CONDITION_HAPPY)
-        {
-            if (currMask != null)
+            // HAPPY
+            else if (cursorPos == CONDITION_HAPPY)
             {
-                currMask.gameObject.SetActive(false);
-                if (currTrans != null && currTrans != conditionTransform)
+                if (currMask != null)
                 {
-                    currTrans.gameObject.SetActive(false);
+                    currMask.gameObject.SetActive(false);
+                    if (currTrans != null && currTrans != conditionTransform)
+                    {
+                        currTrans.gameObject.SetActive(false);
+                    }
+                    happyMask.gameObject.SetActive(true);
+                    currMask = happyMask;
+                    happyTransform.gameObject.SetActive(true);
+                    currTrans = happyTransform;
                 }
-                happyMask.gameObject.SetActive(true);
-                currMask = happyMask;
-                happyTransform.gameObject.SetActive(true);
-                currTrans = happyTransform;
             }
-        }
-        // CLEAN
-        else if (cursorPos == CONDITION_CLEAN)
-        {
-            if (currTrans != null && currMask != null)
+            // CLEAN
+            else if (cursorPos == CONDITION_CLEAN)
             {
-                currMask.gameObject.SetActive(false);
-                if (currTrans != conditionTransform)
+                if (currTrans != null && currMask != null)
                 {
-                    currTrans.gameObject.SetActive(false);
+                    currMask.gameObject.SetActive(false);
+                    if (currTrans != conditionTransform)
+                    {
+                        currTrans.gameObject.SetActive(false);
+                    }
+                    cleanMask.gameObject.SetActive(true);
+                    currMask = cleanMask;
+                    cleanTransform.gameObject.SetActive(true);
+                    currTrans = cleanTransform;
                 }
-                cleanMask.gameObject.SetActive(true);
-                currMask = cleanMask;
-                cleanTransform.gameObject.SetActive(true);
-                currTrans = cleanTransform;
             }
-        }
-        // HEALTH
-        else if (cursorPos == CONDITION_HEALTH)
-        {
-            if (currMask != null)
+            // HEALTH
+            else if (cursorPos == CONDITION_HEALTH)
             {
-                currMask.gameObject.SetActive(false);
-                if (currTrans != null && currTrans != conditionTransform)
+                if (currMask != null)
                 {
-                    currTrans.gameObject.SetActive(false);
+                    currMask.gameObject.SetActive(false);
+                    if (currTrans != null && currTrans != conditionTransform)
+                    {
+                        currTrans.gameObject.SetActive(false);
+                    }
+                    healthMask.gameObject.SetActive(true);
+                    currMask = healthMask;
+                    healthTransform.gameObject.SetActive(true);
+                    currTrans = healthTransform;
                 }
-                healthMask.gameObject.SetActive(true);
-                currMask = healthMask;
-                healthTransform.gameObject.SetActive(true);
-                currTrans = healthTransform;
             }
-        }
-        // CONDITION MENU
-        else if (cursorPos == CONDITION_TRANS_POS) {
-            if (currMask != null)
+            // CONDITION MENU
+            else if (cursorPos == CONDITION_TRANS_POS)
             {
-                if (currTrans != null && currTrans != conditionTransform) {
-                    currTrans.gameObject.SetActive(false);
-                    currTrans = conditionTransform;
+                if (currMask != null)
+                {
+                    if (currTrans != null && currTrans != conditionTransform)
+                    {
+                        currTrans.gameObject.SetActive(false);
+                        currTrans = conditionTransform;
+                    }
+                    currMask.gameObject.SetActive(false);
                 }
-                currMask.gameObject.SetActive(false);
+            }
+            else
+            {
+                clearTrans();
+                clearActive();
+                currMask = null;
+                currTrans = null;
+                ResetCounter();
             }
         }
         // FREE AREA
         else
         {
-            if (currMask != null)
-            {
-                currMask.gameObject.SetActive(false);
-                currMask = null;
-            }
-            if (currTrans != null)
-            {
-                currTrans.gameObject.SetActive(false);
-                currTrans = null;
-            }
+            clearTrans();
+            clearActive();
+            currMask = null;
+            currTrans = null;
             ResetCounter();
         }
+    }
+
+    void clearTrans() {
+        conditionTransform.gameObject.SetActive(false);
+        hungerTransform.gameObject.SetActive(false);
+        happyTransform.gameObject.SetActive(false);
+        cleanTransform.gameObject.SetActive(false);
+        healthTransform.gameObject.SetActive(false);
+    }
+
+    void clearActive() {
+        conditionActive = false;
     }
 
     void ResetCounter() {
@@ -211,6 +231,9 @@ public class ButtonChooseAnimation : MonoBehaviour {
             mask.gameObject.SetActive(false);
             currTrans = trans;
             counter = 0;
+            if (mask == conditionMask) {
+                conditionActive = true;
+            }
         }
         else {
             currMask = mask;
