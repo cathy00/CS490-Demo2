@@ -76,6 +76,7 @@
      <Compile Include="Assets\Script\RandomAction.cs" />
      <Compile Include="Assets\Script\RunMotion.cs" />
      <Compile Include="Assets\Script\Status.cs" />
+     <Compile Include="Assets\Script\TestFolder\ButtonChooseAnimation.cs" />
      <Compile Include="Assets\Script\TrotMotion.cs" />
      <Compile Include="Assets\Script\WalkMotion.cs" />
      <Compile Include="Assets\Script\buttonActiveAnotherTransform.cs" />
