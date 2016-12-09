@@ -72,7 +72,6 @@
      <Compile Include="Assets\Script\FeedingHandler.cs" />
      <Compile Include="Assets\Script\HappyBar.cs" />
      <Compile Include="Assets\Script\HealthBar.cs" />
-     <Compile Include="Assets\Script\OnInventorySelected.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\RandomAction.cs" />
      <Compile Include="Assets\Script\RunMotion.cs" />
@@ -85,7 +84,7 @@
      <None Include="Assets\readme_SDK.txt" />
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\cu_cat\Shaders\CuCatShader.shader" />
-     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\MedCons\ReadMe.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>/Users/Sine/Desktop/CS490-Demo2/cs490/Hibiki_Shoot/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

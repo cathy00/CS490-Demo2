@@ -15,6 +15,8 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 	private bool isPointerEnter;
 	public Transform mytransform;
 
+	public bool isInventory = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -25,8 +27,7 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 	
 	// Update is called once per frame
 	void Update () {
-		if (mytransform.gameObject.activeSelf == false) {
-
+		if (mytransform.gameObject.activeSelf == false && !isInventory) {
 			if (isPointerEnter) {
 				counter++;
 				fillAmount += 0.01f;
@@ -36,9 +37,21 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 			if (isPointerEnter && responseTime == this.counter) {
 				ResetCounter ();
 				mytransform.gameObject.SetActive (true);
+				mask.gameObject.SetActive (false);
+			}
+		} else {
+			if (isPointerEnter) {
+				counter++;
+				fillAmount += 0.01f;
+				if (mask != null)
+					mask.fillAmount = fillAmount;
+			}
+			if (isPointerEnter && responseTime == this.counter) {
+				transform.parent.parent.gameObject.SetActive (false);
+				mytransform.gameObject.SetActive (true);
+				mask.gameObject.SetActive (false);
 			}
 		}
-
 	}
 
 	void ResetCounter(){
