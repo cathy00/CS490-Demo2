@@ -5,18 +5,12 @@ using UnityEngine.UI;
 
 
 public class ButtonChooseAnimation : MonoBehaviour {
-    private int kwidth = Screen.width;
-    private int kheight = Screen.height;
 
-    [SerializeField]
-    private Image mask;
-
-    
-
-    [SerializeField]
-    private GameObject conditionBtn;
+    // Definition
+    int CONDITION_BUTTON_POS = 1;
 
     // Common-Use Field
+
     [SerializeField]
     private GameObject cursor;
 
@@ -24,13 +18,27 @@ public class ButtonChooseAnimation : MonoBehaviour {
     private GameObject ball;
 
     // Common-Use variables
+
     private int counter;
     private float fillAmount = 0.0f;
-    
-    public Transform mytransform;
+    private int kwidth = Screen.width;
+    private int kheight = Screen.height;
+    private float distanceToCamera = 10f;
+    private Image currMask = null;
+    private Transform currTrans = null;
+
+
+    // Special-Use Field
+
+    [SerializeField]
+    private GameObject conditionBtn;
+
+    [SerializeField]
+    private Image conditionMask;
+
+    public Transform conditionTransform;
     public bool isInventory = false;
 
-    private float distanceToCamera = 10f;
 
 
     // Use this for initialization
@@ -43,46 +51,19 @@ public class ButtonChooseAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         cursor.transform.position = kinectToReal(ball.transform.position);
-        if (mytransform.gameObject.activeSelf == false && !isInventory)
+        if (isCursorEnter() == 1)
         {
-            if (isCursorEnter())
-            {
-                counter++;
-                fillAmount += 0.01f;
-                if (mask != null)
-                {
-                    mask.gameObject.SetActive(true);
-                    mask.fillAmount = fillAmount;
-                }
-                    
-            }
-            if (isCursorEnter() && 100 == this.counter)
-            {
-                ResetCounter();
-                mytransform.gameObject.SetActive(true);
-                mask.gameObject.SetActive(false);
-            }
+            actMouseAnim(conditionMask, conditionTransform);
         }
         else
         {
-            if (isCursorEnter())
+            if (currMask != null)
             {
-                counter++;
-                fillAmount += 0.01f;
-                if (mask != null)
-                {
-                    mask.gameObject.SetActive(true);
-                    mask.fillAmount = fillAmount;
-                }
+                currMask.gameObject.SetActive(false);
             }
-            if (isCursorEnter() && 100 == this.counter)
+            if (currTrans != null)
             {
-                transform.parent.parent.gameObject.SetActive(false);
-                // ToDo: set random position
-
-
-                mytransform.gameObject.SetActive(true);
-                mask.gameObject.SetActive(false);
+                currTrans.gameObject.SetActive(false);
             }
         }
     }
@@ -92,16 +73,32 @@ public class ButtonChooseAnimation : MonoBehaviour {
         fillAmount = 0.0f;
     }
 
-    bool isCursorEnter() {
+    int isCursorEnter() {
         Vector2 pos = cursor.transform.position;
-
         // Condition
         if (120 >= pos.x && 20 <= pos.x && kheight-20 >= pos.y && kheight-120 <= pos.y)
         {
-            Debug.Log("asdf");
-            return true;
+            return CONDITION_BUTTON_POS;
         }
-        return false;
+        return -1;
+    }
+
+    void actMouseAnim(Image mask, Transform trans) {
+        if (counter == 100)
+        {
+            trans.gameObject.SetActive(true);
+            mask.gameObject.SetActive(false);
+            currTrans = trans;
+            currMask = null;
+            counter = 0;
+        }
+        else {
+            currMask = mask;
+            counter++;
+            fillAmount += 0.01f;
+            mask.gameObject.SetActive(true);
+            mask.fillAmount = fillAmount;
+        }
     }
 
     Vector2 kinectToReal(Vector2 pos) {
