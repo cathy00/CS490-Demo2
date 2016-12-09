@@ -25,24 +25,25 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 	
 	// Update is called once per frame
 	void Update () {
-		if (isPointerEnter) {
-			counter++;
-			fillAmount += 0.01f;
-			if (mask != null )
-				mask.fillAmount = fillAmount;
-		}
-		if (isPointerEnter && responseTime == this.counter) {
-			ResetCounter ();
-			mytransform.gameObject.SetActive (true);
-			fillAmount = 0.0f;
-			//GameObject.Find ("dropDownButtonGroup").SetActive(true);
-		}
+		if (mytransform.gameObject.activeSelf == false) {
 
+			if (isPointerEnter) {
+				counter++;
+				fillAmount += 0.01f;
+				if (mask != null)
+					mask.fillAmount = fillAmount;
+			}
+			if (isPointerEnter && responseTime == this.counter) {
+				ResetCounter ();
+				mytransform.gameObject.SetActive (true);
+			}
+		}
 
 	}
 
 	void ResetCounter(){
 		counter = 0;
+		fillAmount = 0.0f;
 	}
 
 	public void OnPointerEnter(PointerEventData eventData){
