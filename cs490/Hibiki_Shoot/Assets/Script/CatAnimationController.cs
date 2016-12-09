@@ -18,6 +18,7 @@ public class CatAnimationController : MonoBehaviour {
 	private float secondz;
 	private Vector3 secondPosition;
 	private GameObject currentActivated;
+	private Vector3 defaultPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,8 @@ public class CatAnimationController : MonoBehaviour {
 		move = false;
 		stillEating = false;
 		currentActivated = null;
+		defaultPosition = donuts.transform.position;
+		Debug.Log ("CatAnimationController : " + defaultPosition);
 	}
 
 	// Update is called once per frame
@@ -65,6 +68,7 @@ public class CatAnimationController : MonoBehaviour {
 	}
 
 	void readyToMove () {
+		StartCoroutine (userAction ());
 		move = true;
 		stillEating = true;
 	}
@@ -87,19 +91,42 @@ public class CatAnimationController : MonoBehaviour {
 
 	IEnumerator EndAction()
 	{
+		move = false;
 		cat_animator.Play ("eat", -1);
 		yield return new WaitForSeconds(1.5f);
 		currentActivated.SetActive (false);
+		currentActivated.transform.position = defaultPosition;
 		stillEating = false;
 		currentActivated = null;
 	}
+
 	IEnumerator playAction()
 	{
+		move = false;
 		cat_animator.Play ("playRepeat", -1);
 		yield return new WaitForSeconds(3f);
 		cat_animator.Play ("play", -1);
 		currentActivated.SetActive (false);
+		currentActivated.transform.position = defaultPosition;
 		stillEating = false;
 		currentActivated = null;
+	}
+
+	IEnumerator washAction()
+	{
+		move = false;
+		cat_animator.Play ("wash", -1);
+		yield return new WaitForSeconds(3f);
+		cat_animator.Play ("washEnd", -1);
+		currentActivated.SetActive (false);
+		currentActivated.transform.position = defaultPosition;
+		stillEating = false;
+		currentActivated = null;
+	}
+
+	IEnumerator userAction()
+	{
+		yield return new WaitForSeconds(8f);
+		readyToMove ();
 	}
 }

@@ -48,6 +48,9 @@ public class buttonActiveAnotherTransform : MonoBehaviour, IPointerEnterHandler,
 			}
 			if (isPointerEnter && responseTime == this.counter) {
 				transform.parent.parent.gameObject.SetActive (false);
+				// ToDo: set random position
+
+
 				mytransform.gameObject.SetActive (true);
 				mask.gameObject.SetActive (false);
 			}
