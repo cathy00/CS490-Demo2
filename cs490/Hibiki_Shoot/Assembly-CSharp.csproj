@@ -72,6 +72,7 @@
      <Compile Include="Assets\Script\DragHandler.cs" />
      <Compile Include="Assets\Script\HappyBar.cs" />
      <Compile Include="Assets\Script\HealthBar.cs" />
+     <Compile Include="Assets\Script\InventoryList.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\RandomAction.cs" />
      <Compile Include="Assets\Script\RunMotion.cs" />
