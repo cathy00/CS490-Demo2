@@ -70,13 +70,12 @@
      <Compile Include="Assets\Script\CatAnimationController.cs" />
      <Compile Include="Assets\Script\CoinGenerator.cs" />
      <Compile Include="Assets\Script\DragHandler.cs" />
-     <Compile Include="Assets\Script\FeedingHandler.cs" />
      <Compile Include="Assets\Script\HappyBar.cs" />
      <Compile Include="Assets\Script\HealthBar.cs" />
-     <Compile Include="Assets\Script\OnInventorySelected.cs" />
      <Compile Include="Assets\Script\Player.cs" />
      <Compile Include="Assets\Script\RandomAction.cs" />
      <Compile Include="Assets\Script\RunMotion.cs" />
+     <Compile Include="Assets\Script\ShoppingHandler.cs" />
      <Compile Include="Assets\Script\Status.cs" />
      <Compile Include="Assets\Script\TrotMotion.cs" />
      <Compile Include="Assets\Script\WalkMotion.cs" />
@@ -88,7 +87,7 @@
      <None Include="Assets\cu_cat\Shaders\CuCatShader.shader" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/CSUser/Downloads/CS490-Demo2-master/CS490-Demo2-master/cs490/Hibiki_Shoot/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/CSUser/Documents/GitHub/CS490-Demo2/cs490/Hibiki_Shoot/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
@@ -115,10 +114,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>C:/Users/CSUser/Downloads/CS490-Demo2-master/CS490-Demo2-master/cs490/Hibiki_Shoot/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>C:/Users/CSUser/Documents/GitHub/CS490-Demo2/cs490/Hibiki_Shoot/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/CSUser/Downloads/CS490-Demo2-master/CS490-Demo2-master/cs490/Hibiki_Shoot/Assets/Plugins/System.Data.dll</HintPath>
+ <HintPath>C:/Users/CSUser/Documents/GitHub/CS490-Demo2/cs490/Hibiki_Shoot/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
